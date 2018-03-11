@@ -1,0 +1,71 @@
+<div class="app flex-row align-items-center register_component">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-header">
+            <strong>Company Profile</strong>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-danger" role="alert" *ngIf = "message">
+                {{ message }}
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="company_name" [(ngModel)] = 'company_data.name' placeholder="Company name">
+              </div>
+              <div class="form-group col-sm-4">
+                  <select class="custom-select form-control" [(ngModel)] = 'company_data.dining_style' (ngModelChange)="onDiningStyleChange($event)">
+                    <option *ngFor="let style of dining_style" [value]="style">{{ style }}</option>
+                  </select>
+              </div>
+              <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="cuisines" [(ngModel)] = 'company_data.cuisines' placeholder="Cuisines">
+              </div>
+            </div><!--/.row-->
+            <strong>Contact Person</strong>
+            <div class="row">
+              <div class="form-group col-sm-6">
+                <input type="text" class="form-control" id="full_name" [(ngModel)] = 'company_data.contact_person.fullname' placeholder="Full Name">
+              </div>
+              <div class="form-group col-sm-6">
+                <input type="text" class="form-control" id="title" [(ngModel)] = 'company_data.contact_person.title' placeholder="Title">
+              </div>
+            </div><!--/.row-->
+            <strong>Contact Information</strong>
+            <div class="row">
+              <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="country" [(ngModel)] = 'company_data.contact_information.country' placeholder="Country">
+              </div>
+              <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="city" [(ngModel)] = 'company_data.contact_information.city' placeholder="City">
+              </div>
+              <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="state_province_region" [(ngModel)] = 'company_data.contact_information.state_province_region' placeholder="State / Province / Region">
+              </div>
+            </div><!--/.row-->
+            <div class="row">
+              <div class="form-group col-sm-8">
+                <input type="text" class="form-control" id="street_address" [(ngModel)] = 'company_data.contact_information.street_address' placeholder="Street Address">
+              </div>
+              <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="zip_code" [(ngModel)] = 'company_data.contact_information.zip_code' placeholder="ZIP Code">
+              </div>
+            </div><!--/.row-->
+            <div class="row">
+              <div class="form-group col-sm-6">
+                <input type="text" class="form-control" id="phone_number" [(ngModel)] = 'company_data.contact_information.phone_number' placeholder="Phone Number">
+              </div>
+              <div class="form-group col-sm-6">
+                <input type="text" class="form-control" id="website_address" [(ngModel)] = 'company_data.contact_information.website_address' placeholder="Website address">
+              </div>
+            </div><!--/.row-->
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-sm btn-primary" (click) = "submitCompanyProfile()"><i class="fa fa-dot-circle-o"></i> Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

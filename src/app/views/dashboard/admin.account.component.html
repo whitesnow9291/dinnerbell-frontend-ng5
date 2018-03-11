@@ -1,0 +1,171 @@
+<div class="animated fadeIn admin_account_component">
+  <div class="col-md-8">
+    <div class="card card-accent-primary">
+      <div class="card-header" (click)="companyCollapsed = !companyCollapsed">
+        Company Profile
+        <div class="card-actions">
+          <a class="btn-setting"><i class="icon-arrow-down" *ngIf="companyCollapsed"></i><i class="icon-arrow-up" *ngIf="!companyCollapsed"></i></a>
+        </div>
+      </div>
+      <div class="card-body" 
+      (collapsed)="collapsed($event)"
+      (expanded)="expanded($event)"
+      [collapse]="companyCollapsed">
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <input type="text" class="form-control" id="company_name" placeholder="Company name">
+          </div>
+          <div class="form-group col-sm-4">
+            <input type="text" class="form-control" id="postal-code" placeholder="Postal Code">
+          </div>
+          <div class="form-group col-sm-4">
+            <input type="text" class="form-control" id="cuisines" placeholder="Cuisines">
+          </div>
+        </div><!--/.row-->
+        Contact Person
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <input type="text" class="form-control" id="full_name" placeholder="Full Name">
+          </div>
+          <div class="form-group col-sm-6">
+            <input type="text" class="form-control" id="title" placeholder="Title">
+          </div>
+        </div><!--/.row-->
+        Contact Information
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <input type="text" class="form-control" id="country" placeholder="Country">
+          </div>
+          <div class="form-group col-sm-4">
+            <input type="text" class="form-control" id="city" placeholder="City">
+          </div>
+          <div class="form-group col-sm-4">
+            <input type="text" class="form-control" id="state_province_region" placeholder="State / Province / Region">
+          </div>
+        </div><!--/.row-->
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <input type="text" class="form-control" id="street_address" placeholder="Street Address">
+          </div>
+          <div class="form-group col-sm-4">
+            <input type="text" class="form-control" id="zip_code" placeholder="ZIP Code">
+          </div>
+        </div><!--/.row-->
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <input type="text" class="form-control" id="phone_number" placeholder="Phone Number">
+          </div>
+          <div class="form-group col-sm-6">
+            <input type="text" class="form-control" id="website_address" placeholder="Website address">
+          </div>
+        </div><!--/.row-->
+        <button type="button" class="btn btn-primary btn-block">Update Information
+        </button>
+      </div>
+    </div>
+    <div class="card card-accent-primary">
+      <div class="card-header" (click)="passwordCollapsed = !passwordCollapsed">
+        Change Password
+        <div class="card-actions">
+          <a class="btn-setting"><i class="icon-arrow-down" *ngIf="passwordCollapsed"></i><i class="icon-arrow-up" *ngIf="!passwordCollapsed"></i></a>
+        </div>
+      </div>
+      <div class="card-body"
+            (collapsed)="collapsed($event)"
+            (expanded)="expanded($event)"
+            [collapse]="passwordCollapsed">
+        
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <input type="text" class="form-control" id="old_password" placeholder="Old Password">
+          </div>
+          <div class="form-group col-sm-4">
+            <input type="text" class="form-control" id="new_password" placeholder="New Password">
+          </div>
+          <div class="form-group col-sm-4">
+            <input type="text" class="form-control" id="new_password_confirm" placeholder="New Password Conf">
+          </div>
+        </div><!--/.row-->
+        <button type="button" class="btn btn-primary btn-block">Save Changes
+        </button>
+      </div>
+    </div>
+    <div class="card card-accent-primary">
+      <div class="card-header" (click)="employeeCollapsed = !employeeCollapsed">
+        Employees
+        <div class="card-actions">
+          <a class="btn-setting"><i class="icon-arrow-down" *ngIf="employeeCollapsed"></i><i class="icon-arrow-up" *ngIf="!employeeCollapsed"></i></a>
+        </div>
+      </div>
+      <div class="card-body"
+            (collapsed)="collapsed($event)"
+            (expanded)="expanded($event)"
+            [collapse]="employeeCollapsed">
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+          consequat.
+        </p>
+        <button type="button" class="btn btn-primary btn-block">Save Changes
+        </button>
+      </div>
+      
+    </div>
+    <div class="card card-accent-primary">
+      <div class="card-header" (click)="seatingCollapsed = !seatingCollapsed">
+        Seating
+        <div class="card-actions">
+          <a class="btn-setting"><i class="icon-arrow-down" *ngIf="seatingCollapsed"></i><i class="icon-arrow-up" *ngIf="!seatingCollapsed"></i></a>
+        </div>
+      </div>
+      <div class="card-body"
+            (collapsed)="collapsed($event)"
+            (expanded)="expanded($event)"
+            [collapse]="seatingCollapsed">
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+          consequat.
+        </p>
+        <button type="button" class="btn btn-primary btn-block">Save Changes
+        </button>
+      </div>
+    </div>
+    <div class="card card-accent-primary">
+      <div class="card-header" (click)="stripeCollapsed = !stripeCollapsed">
+        Stripe Account
+        <div class="card-actions">
+          <a class="btn-setting"><i class="icon-arrow-down" *ngIf="stripeCollapsed"></i><i class="icon-arrow-up" *ngIf="!stripeCollapsed"></i></a>
+        </div>
+      </div>
+      <div class="card-body"
+            (collapsed)="collapsed($event)"
+            (expanded)="expanded($event)"
+            [collapse]="stripeCollapsed">
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+          consequat.
+        </p>
+        <button type="button" class="btn btn-primary btn-block">Save Changes
+        </button>
+      </div>
+    </div>
+    <div class="card card-accent-primary">
+      <div class="card-header" (click)="opentableCollapsed = !opentableCollapsed">
+        OpenTable Account
+        <div class="card-actions">
+          <a class="btn-setting"><i class="icon-arrow-down" *ngIf="opentableCollapsed"></i><i class="icon-arrow-up" *ngIf="!opentableCollapsed"></i></a>
+        </div>
+      </div>
+      <div class="card-body"
+            (collapsed)="collapsed($event)"
+            (expanded)="expanded($event)"
+            [collapse]="opentableCollapsed">
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+          consequat.
+        </p>
+        <button type="button" class="btn btn-primary btn-block">Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

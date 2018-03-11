@@ -1,0 +1,33 @@
+<div class="animated fadeIn">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <i class="icon-user"></i> Restaurant Managers
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let user of userdata" >
+              <td>{{ user.username }}</td>
+              <td>{{ roleTitle(user.role) }}</td>
+              <td>
+                <label class="switch switch-text switch-primary">
+                  <input type="checkbox" (change)="onChangeStatus($event.target.checked, user._id)" class="switch-input" [checked] = "user.status == 'approved'">
+                  <span class="switch-label" data-on="On" data-off="Off"></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

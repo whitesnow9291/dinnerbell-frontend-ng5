@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     this.admin_roles = this.dinnerbellservice.admin_roles
   }
   submitForm () {
-    if (!this.validateForm()) {
+    if (this.validateForm()) {
       const params = this.user
       this.authservice.register(params).subscribe((res) => {
         this.user.authyId = -1

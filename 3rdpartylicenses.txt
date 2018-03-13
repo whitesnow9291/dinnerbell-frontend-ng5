@@ -1,14 +1,18 @@
-@angular/forms@5.2.1
+@angular/core@5.2.1
 MIT
 MIT
 
-@angular/core@5.2.1
+@angular/forms@5.2.1
 MIT
 MIT
 
 @angular/common@5.2.1
 MIT
 MIT
+
+ng-select@1.0.0-rc.3
+ISC
+ISC
 
 @angular/router@5.2.1
 MIT

@@ -152,6 +152,7 @@ export class RegisterComponent implements OnInit {
       return false
     }
     let hasCapital = false, hasSpecial = false, hasNumber = false
+    const specialchars = '!@#$%^&*()-+'
     for (let i = 0; i < password.length; i++) {
       const letter = password.charAt(i);
       if (letter >= 'A' && letter <= 'Z') {
@@ -160,10 +161,13 @@ export class RegisterComponent implements OnInit {
       if (letter >= '0' && letter <= '9') {
         hasNumber = true
       }
+      for (let j = 0; j < specialchars.length; j++) {
+        if (specialchars.charAt(j) === password.charAt(i)) {
+          hasSpecial = true
+        }
+      }
     }
-    if(/^[a-zA-Z0-9- ]*$/.test(password) === false) {
-      hasSpecial = true
-    }
+
     if (!hasCapital) {
       this.message = 'Password must contain 1 capital character'
       return false

@@ -41,7 +41,16 @@ export class AuthService {
     const loginUrl = `${this.postUrl}/admin/auth/signin`
     return this.http.post<any>(loginUrl, params, httpOptions)
   }
-
+  changePassword(params): Observable<any> {
+    // return Observable.of(true).do(val => this.isLoggedIn = val)
+    const Url = `${this.postUrl}/admin/auth/change_password`
+    return this.http.post<any>(Url, params, httpOptions)
+  }
+  sendPassword(params): Observable<any> {
+    // return Observable.of(true).do(val => this.isLoggedIn = val)
+    const Url = `${this.postUrl}/admin/auth/send_password`
+    return this.http.post<any>(Url, params, httpOptions)
+  }
   logout(): void {
     this.isLoggedIn = false;
   }

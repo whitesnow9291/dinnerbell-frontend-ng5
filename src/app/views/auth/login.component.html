@@ -13,7 +13,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="icon-user"></i></span>
                 </div>
-                <input type="email" class="form-control" placeholder="Email" [(ngModel)]="user.email">
+                <input type="text" class="form-control" placeholder="Email or phone number" [(ngModel)]="user.phoneOremail">
               </div>
               <div class="input-group mb-4">
                 <div class="input-group-prepend">
@@ -25,8 +25,8 @@
                 <div class="col-6">
                   <button type="button" class="btn btn-primary px-4" (click) = "login()">Login</button>
                 </div>
-                <div class="col-6 text-right" *ngIf="false">
-                  <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                <div class="col-6 text-right">
+                  <button type="button" class="btn btn-link px-0" [routerLink]="['/auth/recover_password']">Forgot password?</button>
                 </div>
               </div>
             </div>

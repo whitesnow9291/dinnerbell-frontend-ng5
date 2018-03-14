@@ -6,6 +6,7 @@ import { P500Component } from './500.component';
 import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
 import { CompanyComponent } from './company.component';
+import { PasswordRecoverComponent } from './password.recover.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,13 @@ const routes: Routes = [
         component: CompanyComponent,
         data: {
           title: 'Register Page'
+        }
+      },
+      {
+        path: 'recover_password',
+        component: PasswordRecoverComponent,
+        data: {
+          title: 'Recover Page'
         }
       },
       {

@@ -11,6 +11,9 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { DinnerbellService } from './services/dinnerbell.service';
 
+// Modal Component
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule } from '@angular/forms';
 // Import containers
 import {
   FullLayoutComponent,
@@ -80,7 +83,9 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot(),
+    FormsModule
   ],
   declarations: [
     AppComponent,

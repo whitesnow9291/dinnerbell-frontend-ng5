@@ -6,7 +6,48 @@
   <button class="navbar-toggler d-md-down-none mr-auto" type="button" appSidebarToggler>
     <span class="navbar-toggler-icon"></span>
   </button>
-  <button class="navbar-toggler d-md-down-none" type="button" appAsideMenuToggler>
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+        <i class="icon-user"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <a class="dropdown-item" data-toggle="modal" (click)="myModal.show()"><i class="fa fa-shield"></i> Change Password </a>
+        
+        <a class="dropdown-item" (click)="logout()"><i class="fa fa-lock"></i> Logout </a>
+      </div>
+    </li>
+  </ul>
+
+  <div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Change your password</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger" role="alert" *ngIf = "message">
+              {{ message }}
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="icon-lock"></i></span>
+            </div>
+            <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password">
+          </div>
+
+          <div class="input-group mb-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="icon-lock"></i></span>
+            </div>
+            <input type="password" class="form-control" [(ngModel)]="password_conf" placeholder="Repeat password">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="myModal.hide()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="changePassword(myModal)">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </header>

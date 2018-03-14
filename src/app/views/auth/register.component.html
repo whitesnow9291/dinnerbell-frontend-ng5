@@ -8,7 +8,7 @@
             <div class="alert alert-danger" role="alert" *ngIf = "message">
                 {{ message }}
             </div>
-            <div class="input-group mb-3">
+            <div class="input-group mb-3" *ngIf="false">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="icon-user"></i></span>
               </div>
@@ -42,7 +42,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="icon-lock"></i></span>
               </div>
-              <input type="password" class="form-control" [(ngModel)]="user.password" placeholder="Password">
+              <input tooltip="uppercase letter, lowercase letter, digit and one of the following characters !@#$%^&*()-+" type="password" class="form-control" [(ngModel)]="user.password" placeholder="Password">
             </div>
 
             <div class="input-group mb-4">
@@ -51,7 +51,7 @@
               </div>
               <input type="password" class="form-control" [(ngModel)]="user.password_conf" placeholder="Repeat password">
             </div>
-            <div class="input-group mb-4 role_div">
+            <div class="input-group mb-4 role_div" *ngIf="false">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="icon-user-following"></i></span>
               </div>

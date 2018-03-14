@@ -16,6 +16,7 @@ export class UserManageComponent implements OnInit {
     this.dinnerbellservice.loadAllUsers({}).subscribe((res) => {
       if (res.success) {
         this.userdata = res.data.user
+        console.log(this.userdata)
       }
     })
     this.admin_roles = this.dinnerbellservice.admin_roles
@@ -31,18 +32,13 @@ export class UserManageComponent implements OnInit {
   onChangeStatus(status, user_id) {
     const params = {
       user_id: user_id,
-      status: ''
-    }
-    if (status) {
-      params.status = 'approved'
-    } else {
-      params.status = 'notapproved'
+      status: status
     }
     this.dinnerbellservice.changeUserStatus(params).subscribe((res) => {
       if (res.success) {
         alert('succesfully updated')
       } else {
-        alert('error')
+        alert(res.error.message)
       }
     })
   }

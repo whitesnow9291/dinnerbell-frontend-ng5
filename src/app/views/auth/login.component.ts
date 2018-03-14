@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   constructor(public router: Router, public authservice: AuthService, public dinnerbellservice: DinnerbellService) { }
   ngOnInit() {
     this.user = {
-      email: '',
+      phoneOremail: '',
       password: ''
     }
     this.admin_roles = this.dinnerbellservice.admin_roles

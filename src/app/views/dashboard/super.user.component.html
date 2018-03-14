@@ -2,29 +2,28 @@
   <div class="col-lg-6">
     <div class="card">
       <div class="card-header">
-        <i class="icon-user"></i> Restaurant Managers
+        <i class="icon-user"></i> Pending Users
       </div>
       <div class="card-body">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Username</th>
+              <th>Email</th>
               <th>Role</th>
-              <th>Status</th>
+              <th>Approve/Reject</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor = "let user of userdata" >
-              <td>{{ user.username }}</td>
+            <ng-template ngFor let-user [ngForOf]="userdata">
+              <tr *ngIf = "user.status==='pending'" >
+              <td>{{ user.email }}</td>
               <td>{{ roleTitle(user.role) }}</td>
               <td>
-                <label class="switch switch-text switch-primary">
-                  <input type="checkbox" (change)="onChangeStatus($event.target.checked, user._id)" class="switch-input" [checked] = "user.status == 'approved'">
-                  <span class="switch-label" data-on="On" data-off="Off"></span>
-                  <span class="switch-handle"></span>
-                </label>
+                <button class="btn btn-sm btn-primary" (click)="onChangeStatus('approved', user._id)" type="button"><span>Approve</span></button>
+                <button class="btn btn-sm btn-danger" (click)="onChangeStatus('rejected', user._id)" type="button"><span>Reject</span></button>
               </td>
             </tr>
+            </ng-template>
           </tbody>
         </table>
       </div>

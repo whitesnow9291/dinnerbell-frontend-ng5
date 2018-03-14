@@ -34,6 +34,10 @@ export class DinnerbellService {
     private http: HttpClient) {
   }
 
+  getCountries(): Observable<any> {
+    const registerUrl = './assets/countries.json'
+    return this.http.get<any>(registerUrl, httpOptions)
+  }
   registerCompany(params): Observable<any> {
     const registerUrl = `${this.postUrl}/admin/auth/register_company`
     return this.http.post<any>(registerUrl, params, httpOptions)

@@ -13,7 +13,7 @@ export class CompanyComponent implements OnInit {
   dining_style: String[]
   message: String = ''
   public phoneModel = '';
-  public phoneMask = ['+', /[1-9]/, /[1-9]/, /[1-9]/, /[1-9]/, '(', /[1-9]/, /\d/, /\d/, ')', ' ',
+  public phoneMask = ['+', /[1-9]/, /\d/, /\d/, /\d/, '(', /\d/, /\d/, /\d/, ')', ' ',
    /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
 
   // ng2-select
@@ -42,6 +42,14 @@ export class CompanyComponent implements OnInit {
         zip_code: '',
         phone_number: '',
         website_address: ''
+      },
+      options: {
+        digital_menu: false,
+        graphic_design: false,
+        branding: false,
+        marketing: false,
+        photo_video: false,
+        web: false
       }
     }
     this.dinnerbellservice.getCountries().subscribe((res) => {

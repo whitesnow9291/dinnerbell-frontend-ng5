@@ -69,6 +69,38 @@
                 <input type="text" class="form-control" id="website_address" [(ngModel)] = 'company_data.contact_information.website_address' placeholder="Website address">
               </div>
             </div><!--/.row-->
+
+            <div class="">
+              <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" type="checkbox" id="inline-checkbox1" [(ngModel)]="company_data.options.digital_menu">
+                <label class="form-check-label" for="inline-checkbox1">Digital Menu</label>
+              </div>
+              <br>
+              <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" type="checkbox" id="inline-checkbox2" [(ngModel)]="company_data.options.graphic_design">
+                <label class="form-check-label" for="inline-checkbox2">Graphic Design</label>
+              </div>
+              <br>
+              <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" type="checkbox" id="inline-checkbox3" [(ngModel)]="company_data.options.branding">
+                <label class="form-check-label" for="inline-checkbox3">Branding</label>
+              </div>
+              <br>
+              <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" type="checkbox" id="inline-checkbox4" [(ngModel)]="company_data.options.marketing">
+                <label class="form-check-label" for="inline-checkbox4">Marketing</label>
+              </div>
+              <br>
+              <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" type="checkbox" id="inline-checkbox5" [(ngModel)]="company_data.options.photo_video">
+                <label class="form-check-label" for="inline-checkbox5">Photo / Video</label>
+              </div>
+              <br>
+              <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" type="checkbox" id="inline-checkbox6" [(ngModel)]="company_data.options.web">
+                <label class="form-check-label" for="inline-checkbox6">Web</label>
+              </div>
+            </div>
           </div>
           <div class="card-footer">
             <button type="submit" class="btn btn-sm btn-primary" (click) = "submitCompanyProfile()"><i class="fa fa-dot-circle-o"></i> Submit</button>

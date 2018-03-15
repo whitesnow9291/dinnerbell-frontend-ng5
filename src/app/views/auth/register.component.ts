@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
               country_label: this.country_label,
               phone_number: `${res.data.user.country_code}${res.data.user.phone_number}`
             }
+            console.log(queryParams)
             const redirect = '/auth/company'
             this.router.navigate([redirect, queryParams])
           // } else if (this.user.admin_role === 'super_visior') {

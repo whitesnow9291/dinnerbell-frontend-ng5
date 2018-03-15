@@ -16,8 +16,8 @@ const httpOptions = {
 export class AuthService {
   isLoggedIn = false;
 
-  postUrl = 'https://vast-taiga-29858.herokuapp.com';
-  // postUrl = 'http://localhost:3000';
+  // postUrl = 'https://vast-taiga-29858.herokuapp.com';
+  postUrl = 'http://localhost:3000';
   // store the URL so we can redirect after logging in
   redirectUrl: string;
   current_user: any;

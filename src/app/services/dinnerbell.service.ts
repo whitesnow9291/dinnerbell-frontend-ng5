@@ -17,7 +17,8 @@ class Group {
 }
 @Injectable()
 export class DinnerbellService {
-  postUrl = 'https://vast-taiga-29858.herokuapp.com';
+
+  postUrl = 'https://vast-taiga-29858.herokuapp.com' 
   // postUrl = 'http://localhost:3000';
 
   admin_roles = [{

@@ -42,7 +42,8 @@ export class RegisterComponent implements OnInit {
               user_email: res.data.user.email,
               company_id: res.data.company._id,
               country_label: this.country_label,
-              phone_number: `${res.data.user.country_code}${res.data.user.phone_number}`
+              country_code: res.data.user.country_code,
+              phone_number: res.data.user.phone_number
             }
             console.log(queryParams)
             const redirect = '/auth/company'

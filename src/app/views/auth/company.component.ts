@@ -13,8 +13,6 @@ export class CompanyComponent implements OnInit {
   dining_style: String[]
   message: String = ''
   public phoneModel = '';
-  public phoneMask = ['+', /[1-9]/, /\d/, /\d/, /\d/, '(', /\d/, /\d/, /\d/, ')', ' ',
-   /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
 
   // ng2-select
   public countries: Array<IOption> = []
@@ -40,7 +38,9 @@ export class CompanyComponent implements OnInit {
         state_province_region: '',
         street_address: '',
         zip_code: '',
-        phone_number: '',
+        country_code: this.router_info.country_code,
+        phone_number: this.router_info.phone_number,
+        phone: '',
         website_address: ''
       },
       options: {
@@ -75,14 +75,10 @@ export class CompanyComponent implements OnInit {
     // Redirect the user
     if (this.validateForm()) {
       this.message = 'Submitting...'
-      let temp = ''
-      for (let i = 0; i < this.phoneModel.length; i ++) {
-        const letter = this.phoneModel.charAt(i)
-        if (letter >= '0' && letter <= '9') {
-          temp = temp.concat(letter)
-        }
-      }
-      this.company_data.contact_information.phone_number = temp
+      this.company_data.contact_information.phone = `+${this.router_info.country_code} (${this.router_info.phone_number.slice(0, 3)}) `
+      + `${this.router_info.phone_number.slice(3, 6)}`
+      + `-${this.router_info.phone_number.slice(6)}`
+
       const params = {
         company_id: this.router_info.company_id,
         user_id: this.router_info.user_id,

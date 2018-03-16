@@ -59,13 +59,13 @@
               </div>
             </div><!--/.row-->
             <div class="row">
-              <div class="form-group col-sm-2">
+              <div class="form-group col-sm-2" *ngIf="false">
                 <input type="text" class="form-control" id="country_code" [(ngModel)] = 'company_data.contact_information.country_code' placeholder="Country Code">
               </div>
-              <div class="form-group col-sm-4">
+              <div class="form-group col-sm-4" *ngIf="false">
                 <input type="text" class="form-control" id="phone_number" [(ngModel)] = 'company_data.contact_information.phone_number' placeholder="Phone Number">
               </div>
-              <div class="form-group col-sm-6">
+              <div class="form-group col-sm-12">
                 <input type="text" class="form-control" id="website_address" [(ngModel)] = 'company_data.contact_information.website_address' placeholder="Website address">
               </div>
             </div><!--/.row-->

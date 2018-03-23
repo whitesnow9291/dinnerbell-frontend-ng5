@@ -10,6 +10,8 @@ import { AdminMenuSettingComponent } from './admin.menu.component';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+// Ng2-select
+import { SelectModule } from 'ng-select';
 // Collapse Component
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 @NgModule({
@@ -18,7 +20,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     ChartsModule,
     CollapseModule.forRoot(),
     CommonModule,
-    FormsModule
+    FormsModule,
+    SelectModule
   ],
   declarations: [ DashboardComponent,
      UserManageComponent,

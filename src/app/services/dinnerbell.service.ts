@@ -51,6 +51,14 @@ export class DinnerbellService {
     const approveUrl = `${this.postUrl}/admin/user/change_user_status`
     return this.http.post<any>(approveUrl, params, httpOptions)
   }
+  getCompanyInfo(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/getCompanyInfo`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  saveCompanyInfo(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/saveCompanyInfo`
+    return this.http.post<any>(url, params, httpOptions)
+  }
 }
 
 

@@ -7,6 +7,7 @@ import { UserManageComponent } from './super.user.component';
 import { AdminAccountManageComponent } from './admin.account.component';
 import { AdminStaffSettingComponent } from './admin.staff.component';
 import { AdminMenuSettingComponent } from './admin.menu.component';
+import { IngredientContainerComponent } from '../ingredient/ingredient.container.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,20 @@ const routes: Routes = [
         component: AdminStaffSettingComponent,
         data: {
           title: 'Staff Dashboard'
+        }
+      },
+      {
+        path: 'ingredient',
+        component: IngredientContainerComponent,
+        data: {
+          title: 'Ingredient Dashboard'
+        }
+      },
+      {
+        path: 'menu',
+        component: IngredientContainerComponent,
+        data: {
+          title: 'Menu Dashboard'
         }
       },
     ]

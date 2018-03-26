@@ -18,8 +18,8 @@ class Group {
 @Injectable()
 export class DinnerbellService {
 
-  postUrl = 'https://vast-taiga-29858.herokuapp.com'
-  // postUrl = 'http://localhost:3000';
+  // postUrl = 'https://vast-taiga-29858.herokuapp.com'
+  postUrl = 'http://localhost:3000';
 
   admin_roles = [{
     'id' : 'restaurant_manager',
@@ -28,7 +28,7 @@ export class DinnerbellService {
     'id' : 'super_visior',
     'name' : 'Super Visior'
   }]
-  user_roles = ['host', 'server', 'staff']
+  employee_roles = ['Host', 'Server', 'Chef']
   dining_style = ['Café / Bistro', 'Fast food', 'Fast casual', 'Casual dining', 'Fine dining', 'Other']
 
   constructor(
@@ -47,12 +47,44 @@ export class DinnerbellService {
     const loadUrl = `${this.postUrl}/admin/user/load_all_user`
     return this.http.post<any>(loadUrl, params, httpOptions)
   }
+  loadEmployees(params): Observable<any> {
+    const loadUrl = `${this.postUrl}/admin/user/load_employees`
+    return this.http.post<any>(loadUrl, params, httpOptions)
+  }
+  updateEmployee(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/update_employee`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  removeEmployee(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/remove_employee`
+    return this.http.post<any>(url, params, httpOptions)
+  }
   changeUserStatus(params): Observable<any> {
     const approveUrl = `${this.postUrl}/admin/user/change_user_status`
     return this.http.post<any>(approveUrl, params, httpOptions)
   }
   getCompanyInfo(params): Observable<any> {
     const url = `${this.postUrl}/admin/user/getCompanyInfo`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  getIngredientCategory(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/getIngredientCategory`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  getIngredients(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/getIngredients`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  registerIngredientCategory(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/registerIngredientCategory`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  registerIngredient(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/registerIngredient`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  getIngredientLabels(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/getIngredientLabels`
     return this.http.post<any>(url, params, httpOptions)
   }
   saveCompanyInfo(params): Observable<any> {

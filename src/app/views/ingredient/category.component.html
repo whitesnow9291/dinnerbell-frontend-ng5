@@ -1,0 +1,34 @@
+<div class="animated fadeIn ingredient_category">
+    <div class="list-group">
+        <a *ngFor = "let ct of categories; let i = index" 
+            class="list-group-item list-group-item-action" 
+            [class.active] = "current_categry_index == i"
+            (click)="onClickCategory(i)">{{ct.name}}</a>
+        <button type="button" class="btn btn-success btn-lg btn-block" (click) = "ingredientCategory.show()">Add Ingredient</button>
+    </div>
+</div>
+
+<div bsModal #ingredientCategory="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Ingredient Info</h4>
+            <button type="button" class="close" (click)="ingredientCategory.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Name</label>
+                <div class="col-md-9">
+                    <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Category" [(ngModel)] = "newCategory.name">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="ingredientCategory.hide()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="onRegisterCategory(ingredientCategory)">Save changes</button>
+        </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,17 @@
+<div class="animated fadeIn admin_account_component">
+  <div class="row">
+    <div class="col-md-12">
+      <app-ingredient-header (onViewModeChange)="onViewModeChange($event)"></app-ingredient-header>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-3">
+        <app-ingredient-category [categories]= "categories" (onClickCategoryEmit)="onCategoryChange($event)"></app-ingredient-category>
+      </div>
+    
+      <div class="col-md-9">
+        <app-ingredient-list [ingredients]="ingredients" [viewMode]= "viewMode"></app-ingredient-list>
+      </div>
+  </div>
+
+</div>

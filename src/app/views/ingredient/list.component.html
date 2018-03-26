@@ -1,0 +1,66 @@
+<div class="animated fadeIn ingredient_list">
+    <div class="row" *ngIf="viewMode=='list'">
+      <div class="col-sm-6 col-md-4 p-3 list_item_div" *ngFor="let ig of ingredients">
+        <strong> {{ ig.title + '$' + ig.price }}  </strong>{{ig.label?ig.label.name: ''}}
+      </div>
+    </div>
+    <div class="row" *ngIf="viewMode=='thumb'">
+      <div class="col-sm-6 col-md-4 p-3 list_item_div" *ngFor="let ig of ingredients">
+        <div class="">
+          <img class="w-100" [src] = "ig.photo_url" />
+        </div>
+        <div class="p-3 list_item_div">
+          <p>{{ig.label?ig.label.name: ''}}</p>
+          <strong> {{ ig.title }}  </strong><strong class="float-right">{{ '$' + ig.price }}</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-3 list_item_div">
+        <button type="button" class="btn btn-success btn-lg btn-block" (click) = "ingredientModal.show()">Add Ingredient</button>
+    </div>
+</div>
+<div bsModal #ingredientModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Ingredient Info</h4>
+            <button type="button" class="close" (click)="ingredientModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Title</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" placeholder="title" [(ngModel)] = "newingredient.title">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Price</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" placeholder="price" [(ngModel)] = "newingredient.price">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Photo</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" placeholder="photo" [(ngModel)] = "newingredient.photo_url">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Label</label>
+                <div class="col-md-9">
+                    <select [(ngModel)] = "newingredient.label" class="form-control">
+                        <option value="label._id" *ngFor="let label of labels">{{label.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="ingredientModal.hide()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="onRegisterIngredient(ingredientModal)">Save changes</button>
+        </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

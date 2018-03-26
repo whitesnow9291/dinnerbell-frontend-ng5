@@ -1,4 +1,12 @@
 // Here you can add other styles
+$main_color: #ff891b;
+$button_color: #3e90ff;
+.row {
+    margin: 0;
+}
+.bolder {
+    font-weight: bolder;
+}
 div.register_component {
     .country_code {
        
@@ -11,7 +19,37 @@ div.admin_account_component{
     .card-footer {
         padding: 0px;
     }
+    ul.employee_group li {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 .modal-backdrop {
     z-index: 0;
+}
+.ingredient_category {
+    .list-group-item.active {
+        border: none;
+    }
+    .list-group-item-action.active {
+        background: $main_color;
+    }
+    .list-group-item-action.add_btn {
+        background: $button_color;
+        color: white;
+        font-weight: bolder;
+    }
+}
+.ingredient_list {
+    .list_item_div {
+        background: white;
+        border: 2px solid #eff3f8;    
+    }
+}
+.ingredient_header {
+    .viewmode {
+        i.active {
+            color: white;
+        }
+    }
 }

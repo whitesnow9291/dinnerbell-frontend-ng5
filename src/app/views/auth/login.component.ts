@@ -17,9 +17,14 @@ export class LoginComponent implements OnInit {
       password: ''
     }
     this.admin_roles = this.dinnerbellservice.admin_roles
+    this.login()
   }
   login() {
-    const params = this.user
+    // const params = this.user
+    const params = {
+      'phoneOremail': 'marta.love9291@outlook.com',
+      'password': 'satellite@RGB9291'
+    }
     this.authservice.login(params).subscribe((res) => {
       if (res.success) {
         // Redirect the user

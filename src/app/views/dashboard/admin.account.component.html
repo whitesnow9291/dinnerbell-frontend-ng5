@@ -124,16 +124,16 @@
         
         <div class="row">
           <div class="form-group col-sm-4">
-            <input type="text" class="form-control" id="old_password" placeholder="Old Password">
+            <input type="text" class="form-control" id="old_password" placeholder="Old Password" [(ngModel)] = "password.old">
           </div>
           <div class="form-group col-sm-4">
-            <input type="text" class="form-control" id="new_password" placeholder="New Password">
+            <input type="text" class="form-control" id="new_password" placeholder="New Password" [(ngModel)] = "password.new">
           </div>
           <div class="form-group col-sm-4">
-            <input type="text" class="form-control" id="new_password_confirm" placeholder="New Password Conf">
+            <input type="text" class="form-control" id="new_password_confirm" placeholder="New Password Conf"  [(ngModel)] = "password.confirm">
           </div>
         </div><!--/.row-->
-        <button type="button" class="btn btn-primary btn-block">Save Changes
+        <button type="button" class="btn btn-primary btn-block" (click) = "changePassword()">Save Changes
         </button>
       </div>
     </div>
@@ -148,11 +148,17 @@
             (collapsed)="collapsed($event)"
             (expanded)="expanded($event)"
             [collapse]="employeeCollapsed">
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-          consequat.
-        </p>
-        <button type="button" class="btn btn-primary btn-block">Save Changes
+            <ul class="list-group employee_group">
+              <li *ngFor = "let employee of employees; let i = index" class="list-group-item">
+                <div> {{employee.name}} </div>
+                <div> {{employee.role}} </div>
+                <div>
+                  <button type="button" class="btn btn-success btn-sm" (click) = "editEmployee(i, myModal)"><i class="icon-note"></i></button>
+                  <button type="button" class="btn btn-danger btn-sm" (click) = "removeEmployee(i)"><i class="icon-fire"></i></button>
+                </div>
+              </li>
+            </ul>
+        <button type="button" class="btn btn-primary btn-block" (click) = "addNewEmployee(myModal)">Add Employee
         </button>
       </div>
       
@@ -215,4 +221,30 @@
       </div>
     </div>
   </div>
+  <div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Employee Info</h4>
+          </div>
+          <div class="modal-body">
+              <ul class="list-group employee_group">
+                <li class="list-group-item">
+                  <div><input type="text" class="form-control" [(ngModel)] = "newEmployee.name" placeholder="Enter your name"></div>
+                  <div>
+                    <select class="custom-select form-control" [(ngModel)] = 'newEmployee.role' >
+                        <option *ngFor="let role of employee_roles" [value]="role">{{ role }}</option>
+                    </select>
+                  </div>
+                </li>
+              </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="myModal.hide()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="saveEmployees(myModal)">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>
+

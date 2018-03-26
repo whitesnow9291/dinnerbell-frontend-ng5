@@ -22,5 +22,17 @@ export const navigation = [
     url: '/dashboard/admin/staff_setting',
     icon: 'icon-book-open',
     role: 'restaurant_manager'
+  },
+  {
+    name: 'Ingredient',
+    url: '/dashboard/admin/ingredient',
+    icon: 'icon-puzzle',
+    role: 'restaurant_manager'
+  },
+  {
+    name: 'Menus',
+    url: '/dashboard/admin/menus',
+    icon: 'icon-support',
+    role: 'restaurant_manager'
   }
 ];

@@ -1,5 +1,5 @@
 // Here you can add other styles
-$main_color: #ff891b;
+$main_color: #e6aa72;
 $button_color: #3e90ff;
 .row {
     margin: 0;
@@ -46,10 +46,17 @@ div.admin_account_component{
         border: 2px solid #eff3f8;    
     }
 }
-.ingredient_header {
-    .viewmode {
-        i.active {
-            color: white;
-        }
+.viewmode {
+    i.active {
+        color: white;
+    }
+}
+.submenu {
+    .card-header {
+        background: $main_color;
+    }
+    .list_item_div {
+        background: white;
+        border: 2px solid #eff3f8;    
     }
 }

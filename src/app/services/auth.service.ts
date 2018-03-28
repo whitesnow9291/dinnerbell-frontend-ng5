@@ -7,6 +7,7 @@ import 'rxjs/add/operator/delay';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -16,8 +17,7 @@ const httpOptions = {
 export class AuthService {
   isLoggedIn = false;
 
-  // postUrl = 'https://vast-taiga-29858.herokuapp.com'
-  postUrl = 'http://localhost:3000';
+  postUrl = environment.backend_base_url;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;

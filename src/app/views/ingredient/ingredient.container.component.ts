@@ -12,6 +12,7 @@ export class IngredientContainerComponent implements OnInit {
   ingredients: any = []
   company_id: string
   category_index: number
+  category_id: String = ''
   categories: any[] = []
   constructor( public dinnerbellservice: DinnerbellService, public authservice: AuthService ) { }
   ngOnInit() {
@@ -34,8 +35,10 @@ export class IngredientContainerComponent implements OnInit {
   }
   onCategoryChange($event) {
     this.category_index = $event
+    this.category_id = this.categories[this.category_index]._id
+
     const params_ingredient = {
-      category_id: this.categories[this.category_index]._id
+      category_id: this.category_id
     }
     this.dinnerbellservice.getIngredients(params_ingredient).subscribe((res) => {
       if (res.success) {

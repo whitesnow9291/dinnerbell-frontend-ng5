@@ -6,6 +6,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -18,8 +19,7 @@ class Group {
 @Injectable()
 export class DinnerbellService {
 
-  // postUrl = 'https://vast-taiga-29858.herokuapp.com'
-  postUrl = 'http://localhost:3000';
+  postUrl = environment.backend_base_url;
 
   admin_roles = [{
     'id' : 'restaurant_manager',
@@ -67,6 +67,11 @@ export class DinnerbellService {
     const url = `${this.postUrl}/admin/user/getCompanyInfo`
     return this.http.post<any>(url, params, httpOptions)
   }
+  saveCompanyInfo(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/saveCompanyInfo`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  // ingredient menu
   getIngredientCategory(params): Observable<any> {
     const url = `${this.postUrl}/admin/user/getIngredientCategory`
     return this.http.post<any>(url, params, httpOptions)
@@ -87,8 +92,33 @@ export class DinnerbellService {
     const url = `${this.postUrl}/admin/user/getIngredientLabels`
     return this.http.post<any>(url, params, httpOptions)
   }
-  saveCompanyInfo(params): Observable<any> {
-    const url = `${this.postUrl}/admin/user/saveCompanyInfo`
+  getFoodLabels(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/getIngredientLabels`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  // menu
+  getMainMenu(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/getMainMenu`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  getSubMenus(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/getSubMenus`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  registerMainMenu(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/registerMainMenu`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  registerSubMenu(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/registerSubMenu`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  registerMenu(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/registerMenu`
+    return this.http.post<any>(url, params, httpOptions)
+  }
+  getMenuLabels(params): Observable<any> {
+    const url = `${this.postUrl}/admin/user/getMenuLabels`
     return this.http.post<any>(url, params, httpOptions)
   }
 }

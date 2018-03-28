@@ -22,4 +22,7 @@ export class AppHeaderComponent implements OnInit{
     this.authservice.logout()
     this.router.navigate(['auth/login'])
   }
+  changePassword(modal) {
+
+  }
 }

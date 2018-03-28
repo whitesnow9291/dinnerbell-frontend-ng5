@@ -8,6 +8,7 @@ import { AdminAccountManageComponent } from './admin.account.component';
 import { AdminStaffSettingComponent } from './admin.staff.component';
 import { AdminMenuSettingComponent } from './admin.menu.component';
 import { IngredientContainerComponent } from '../ingredient/ingredient.container.component';
+import { MenuContainerComponent } from '../menu/menu.container.component';
 
 const routes: Routes = [
   {
@@ -54,8 +55,8 @@ const routes: Routes = [
         }
       },
       {
-        path: 'menu',
-        component: IngredientContainerComponent,
+        path: 'menus',
+        component: MenuContainerComponent,
         data: {
           title: 'Menu Dashboard'
         }

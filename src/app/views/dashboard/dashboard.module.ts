@@ -12,6 +12,14 @@ import { IngredientCategoryComponent } from '../ingredient/category.component';
 import { IngredientHeaderComponent } from '../ingredient/header.component';
 import { IngredientListComponent } from '../ingredient/list.component';
 
+import { MenuContainerComponent } from '../menu/menu.container.component';
+import { MainMenuComponent } from '../menu/mainmenu.component';
+import { MenuHeaderComponent } from '../menu/menu.header.component';
+import { SubMenuComponent } from '../menu/submenu.component';
+
+import { ImageUploadModule } from "angular2-image-upload";
+
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 // Ng2-select
@@ -29,6 +37,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FormsModule,
     SelectModule,
     ModalModule.forRoot(),
+    ImageUploadModule.forRoot(),
+    TabsModule
   ],
   declarations: [ DashboardComponent,
      UserManageComponent,
@@ -38,6 +48,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
      IngredientContainerComponent,
      IngredientCategoryComponent,
      IngredientHeaderComponent,
-     IngredientListComponent]
+     IngredientListComponent,
+
+     MenuContainerComponent,
+     MainMenuComponent,
+     MenuHeaderComponent,
+     SubMenuComponent
+    ]
 })
 export class DashboardModule { }

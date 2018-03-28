@@ -1,7 +1,7 @@
 <div class="animated fadeIn ingredient_list">
     <div class="row" *ngIf="viewMode=='list'">
       <div class="col-sm-6 col-md-4 p-3 list_item_div" *ngFor="let ig of ingredients">
-        <strong> {{ ig.title + '$' + ig.price }}  </strong>{{ig.label?ig.label.name: ''}}
+        <strong> {{ ig.title + '$' + ig.price }}  </strong><strong [style.color]="ig.label?ig.label.color:'black'">{{ig.label?ig.label.name: ''}}</strong>
       </div>
     </div>
     <div class="row" *ngIf="viewMode=='thumb'">
@@ -10,7 +10,7 @@
           <img class="w-100" [src] = "ig.photo_url" />
         </div>
         <div class="p-3 list_item_div">
-          <p>{{ig.label?ig.label.name: ''}}</p>
+          <p [style.color]="ig.label?ig.label.color:'black'">{{ig.label?ig.label.name: ''}}</p>
           <strong> {{ ig.title }}  </strong><strong class="float-right">{{ '$' + ig.price }}</strong>
         </div>
       </div>
@@ -45,21 +45,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="text-input">Photo</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" placeholder="photo" [(ngModel)] = "newingredient.photo_url">
+                    <image-upload [url]="uploadurl" [max]="1"
+                    (uploadFinished)="onUploadFinished($event)"
+                    (removed)="onRemoved($event)"
+                    ></image-upload>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="text-input">Label</label>
                 <div class="col-md-9">
                     <select [(ngModel)] = "newingredient.label" class="form-control">
-                        <option value="label._id" *ngFor="let label of labels">{{label.name}}</option>
+                        <option [value]="">Choose Label</option>
+                        <option [value]="label._id" *ngFor="let label of labels">{{label.name}}</option>
                     </select>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="ingredientModal.hide()">Close</button>
-            <button type="button" class="btn btn-primary" (click)="onRegisterIngredient(ingredientModal)">Save changes</button>
+            <button type="button" class="btn btn-primary" (click)="onRegisterIngredient(ingredientModal)">Save</button>
         </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

@@ -1,0 +1,138 @@
+<div class="animated fadeIn submenu">
+    {{newMenu | json }}
+    <div class="card" *ngFor="let submenu of subMenues">
+        <div class="card-header">
+            <strong>{{submenu.name}}</strong>
+        </div>
+        <div class="card-body">
+            <div class="row" *ngIf="viewMode=='list'">
+                <div class="col-sm-6 col-md-12 p-3 list_item_div" *ngFor="let mn of submenu.menus">
+                    <strong class="mr-3"> {{ mn.details.title }}</strong>
+                    <strong class="mr-3">{{ '$' + mn.details.price }} </strong>
+                    <strong [style.color]="mn.details.label?mn.details.label.color:'black'">{{mn.details.label?mn.details.label.name: ''}}</strong>
+                </div>
+            </div>
+            <div class="row" *ngIf="viewMode=='thumb'">
+                <div class="col-sm-4 col-md-4 p-4 list_item_div" *ngFor="let mn of submenu.menus">
+                    <div class="">
+                        <img class="w-100" [src] = "mn.details.photo_urls[0]" />
+                    </div>
+                    <div class="p-3 list_item_div">
+                        <p [style.color]="mn.details.label?mn.details.label.color:'black'">{{mn.details.label?mn.details.label.name: ''}}</p>
+                        <strong> {{ mn.details.title }}  </strong><strong class="float-right">{{ '$' + mn.details.price }}</strong>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="p-3 list_item_div">
+                <button type="button" class="btn btn-success btn-lg btn-block" (click) = "createMenu(menuMDL)">Add Menu</button>
+            </div>
+        <!--/.row-->
+        </div>
+    </div>
+    <button type="button" class="btn btn-success btn-lg btn-block" (click) = "subMenuMDL.show()">Add sub menu</button>
+</div>
+
+<div bsModal #subMenuMDL="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Sub menu Info</h4>
+            <button type="button" class="close" (click)="subMenuMDL.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" placeholder="SubMenu" [(ngModel)] = "newSubMenu.name">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="subMenuMDL.hide()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="onRegisterSubMenu(subMenuMDL)">Save</button>
+        </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div bsModal #menuMDL="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title"> menu Info</h4>
+            <button type="button" class="close" (click)="menuMDL.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <tabset>
+                    <tab heading="Item Details">
+                        <div class="row">
+                            <div class="form-group col-sm-10">
+                                <input type="text" [(ngModel)] = "newMenu.details.title" class="form-control" placeholder="Title">
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <input type="text" [(ngModel)] = "newMenu.details.price" class="form-control" placeholder="Price($)">
+                            </div>
+                        </div><!--/.row-->
+                        <div class="form-group">
+                            <div class="form-group col-sm-12">
+                                <textarea rows="9" [(ngModel)] = "newMenu.details.description" class="form-control" placeholder="Content.."></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group col-sm-12">
+                                <select [(ngModel)] = "newMenu.label" class="form-control">
+                                    <option [value]="label._id" *ngFor="let label of labels">{{label.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <image-upload [url]="uploadurl" [max]="10"
+                                (uploadFinished)="onUploadFinished($event)"
+                                (removed)="onRemoved($event)"
+                            ></image-upload>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="Customization">
+                      2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </tab>
+                    <tab heading="Categories">
+                        <div class="row" *ngFor="let ct_relation of newMenu.categories; let i = index">
+                            <div class="form-group col-sm-5">
+                                <select class="form-control" name="selectmainmenu" [(ngModel)] = "ct_relation.mainmenu">
+                                    <option *ngFor="let ct of mainMenues" [value]="ct._id">{{ ct.name }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-5">
+                                <select class="form-control" [(ngModel)] = "ct_relation.submenu">
+                                    <option *ngFor="let ct_sub of subMenuOfMainMenu(ct_relation.mainmenu)" [value]="ct_sub._id">{{ ct_sub.name }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <button type="button" class="btn btn-primary" (click)="onRemoveCategoryFromMenu(i)"><i class="icon-fire"></i></button>
+                            </div>
+                        </div><!--/.row-->
+
+                        <div class="form-group col-sm-4">
+                            <button type="button" class="btn btn-primary" (click)="onAddCategoryToMenu()">Add Category</button>
+                        </div>
+                    </tab>
+                    </tabset>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="menuMDL.hide()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="onRegisterMenu(menuMDL)">Save</button>
+        </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,15 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <app-menu-header (onViewModeChange)="onViewModeChange($event)"></app-menu-header>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-3">
+        <app-mainmenu [mainMenues] = "mainMenues" (mainMenuClick)= "mainMenuClick($event)"></app-mainmenu>
+      </div>
+      <div class="col-md-9">
+        <app-submenu [mainMenues]="mainMenues" [viewMode]="viewMode" [subMenues] = "subMenues" [current_mainmenu_id]="current_mainmenu_id"></app-submenu>
+      </div>
+  </div>
+</div>
